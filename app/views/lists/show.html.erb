@@ -1,0 +1,39 @@
+<div class="banner">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+<div class="container w-75">
+  <div class="row my-4">
+    <div class="d-flex justify-content-end mb-3">
+      <%= link_to 'Add Movie', new_list_bookmark_path(@list), class: 'btn btn-primary btn-sm' %>
+    </div>
+    <div class="movie-cards">
+      <% @list.bookmarks.each do |b| %>
+        <div class="card-trip" data-controller="bookmark" data-action="click->bookmark#openModal">
+          <img src="https://image.tmdb.org/t/p/w500<%= b.movie.poster_url %>" />
+          <div class="card-trip-infos">
+            <h2 class="text-truncate"><%= b.movie.title %></h2>
+            <p><%= b.movie.overview %></p>
+            <div class="d-flex justify-content-between pt-3">
+              <div>
+                <i class="fa-solid fa-quote-left"></i>
+                <%= b.comment %>
+              </div>
+              <%= link_to bookmark_path(b), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can text-dark ms-2"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
