@@ -1,27 +1,27 @@
-<div class="banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @list.photo.attached? ? @list.photo.key : 'list_background_default', crop: :fill %>)">
   <div class="container">
     <h1><%= @list.name %></h1>
   </div>
 </div>
-<div class="container w-75">
+<div class="container w-75 my-4">
   <div class="row my-4">
     <div class="d-flex justify-content-end mb-3">
       <%= link_to 'Add Movie', new_list_bookmark_path(@list), class: 'btn btn-primary btn-sm' %>
     </div>
     <div class="movie-cards">
       <% @list.bookmarks.each do |b| %>
-        <div class="card-trip" data-controller="bookmark" data-action="click->bookmark#openModal">
+        <div class="card-trip" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  data-controller="bookmark" data-action="click->bookmark#openModal">
           <img src="https://image.tmdb.org/t/p/w500<%= b.movie.poster_url %>" />
           <div class="card-trip-infos">
             <h2 class="text-truncate"><%= b.movie.title %></h2>
             <p><%= b.movie.overview %></p>
-            <div class="d-flex justify-content-between pt-3">
+            <div class="d-flex justify-content-between pt-1 border-top">
               <div>
                 <i class="fa-solid fa-quote-left"></i>
                 <%= b.comment %>
               </div>
               <%= link_to bookmark_path(b), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                <i class="fa-regular fa-trash-can text-dark ms-2"></i>
+                <i class="fa-regular fa-trash-can text-dark"></i>
               <% end %>
             </div>
           </div>
@@ -29,11 +29,43 @@
       <% end %>
     </div>
   </div>
+  <div class="mb-3">
+    <div class="header">Reviews</div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group list-group-flush">
+        <% @list.reviews.each do |r| %>
+          <li class="list-group-item">
+            <div>
+              <% r.rating.times do %>
+                <i class="fa-solid fa-star" style="color: gold"></i>
+              <% end %>
+              <% (5 - r.rating).times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+            </div>
+            <div class="d-flex justify-content-between">
+              <%= r.content %>
+              <%= link_to review_path(r), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can text-dark ms-2"></i>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col">
+      <%= render "review_form", review: @review %>
+    </div>
+  </div>
 </div>
 
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
+      <div class="modal-body">
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,22 @@
+div:has(.form-check-input:checked) > label .fa-star,
+div:has(~ div > .form-check-input:checked) > label .fa-star {
+  color: gold;
+}
+
+div:has(.form-check-input:hover) > label .fa-star,
+div:has(~ div > .form-check-input:hover) > label .fa-star {
+  color: gold;
+}
+
+.form-check-input {
+  display: none;
+}
+
+.review-content {
+  width: 80%;
+  text-align: justify;
+}
+
+.fa-star {
+  transition: color 100ms;
+}
