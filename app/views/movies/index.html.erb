@@ -1,0 +1,24 @@
+<div class="banner">
+  <div class="container">
+    <h1>Movies</h1>
+  </div>
+</div>
+<div class="container w-75 my-4">
+  <% @movie_lists.each do |movies| %>
+    <div class="row">
+      <div class="d-flex justify-content-between mb-3">
+        <div class="header">Top Rated</div>
+      </div>
+      <div class="cards">
+        <% movies.each do |m| %>
+          <div class="card-trip">
+            <div class="image-container">
+              <img src="https://image.tmdb.org/t/p/w500<%= m.poster_path %>" />
+            </div>
+            <h2 class="text-truncate movie-title"><%= m.title %></h2>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

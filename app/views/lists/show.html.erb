@@ -8,10 +8,10 @@
     <div class="d-flex justify-content-end mb-3">
       <%= link_to 'Add Movie', new_list_bookmark_path(@list), class: 'btn btn-primary btn-sm' %>
     </div>
-    <div class="movie-cards">
+    <div class="bookmark-cards">
       <% @list.bookmarks.each do |b| %>
         <div class="card-trip" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"  data-controller="bookmark" data-action="click->bookmark#openModal">
-          <img src="https://image.tmdb.org/t/p/w500<%= b.movie.poster_url %>" />
+          <img src="https://image.tmdb.org/t/p/w500<%= b.movie.poster_path %>" />
           <div class="card-trip-infos">
             <h2 class="text-truncate"><%= b.movie.title %></h2>
             <p><%= b.movie.overview %></p>
