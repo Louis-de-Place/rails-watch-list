@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movie_lists = Movie.all.partition(&:list_type)
+    @movies_lists = Movie.all.group_by(&:list_type)
   end
 
   def list

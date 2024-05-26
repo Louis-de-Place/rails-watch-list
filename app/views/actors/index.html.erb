@@ -1,21 +1,18 @@
-<div class="banner">
-  <div class="container">
-    <h1>Actors</h1>
-  </div>
-</div>
-<div class="container w-75 my-4">
+<div class="container">
   <div class="row">
-    <div class="d-flex justify-content-between mb-3">
-      <div class="header">Top Rated</div>
+    <div class="flexbox">
+      <div class="header">Popular</div>
     </div>
     <div class="cards">
       <% @actors.each do |a| %>
-        <div class="card-trip">
-          <div class="image-container">
-            <img src="https://image.tmdb.org/t/p/w500<%= a.profile_url %>" />
+        <%= link_to actor_path(a), class: "text-decoration-none text-dark" do %>
+          <div class="card-trip">
+            <div class="image-container">
+              <%= image_tag a.profile_path ? "https://image.tmdb.org/t/p/w500#{a.profile_path}" : "default_pfp.jpg" %>
+            </div>
+            <h2 class="text-truncate card-title"><%= a.name %></h2>
           </div>
-          <h2 class="text-truncate movie-title"><%= a.name %></h2>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

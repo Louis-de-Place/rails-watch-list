@@ -1,7 +1,40 @@
-.list-cards {
+.cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 16px;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+
+  .card-trip {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-container {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 10px 0 20px 0;
+      padding: 0 10px;
+    }
+  }
+}
+
+.list-cards {
+  @extend .cards;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .card-category {
@@ -24,6 +57,38 @@
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+}
+
+.bookmark-cards {
+  @extend .cards;
+  grid-template-columns: repeat(2, 1fr);
+
+  .card-trip {
+    img {
+      height: 200px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    p {
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 12px;
+      overflow: hidden;
+      line-height: 1.2em;
+      max-height: 3.6em;
+      text-align: justify;
+    }
+
+    .card-trip-infos {
+      margin-top: 8px;
+      padding: 0 16px;
+    }
   }
 }
 
@@ -59,82 +124,5 @@
 @media (min-width: 1200px) {
   .list-cards {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.bookmark-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 16px;
-
-  .card-trip {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-
-    img {
-      height: 200px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    h2 {
-      font-size: 16px;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    p {
-      font-size: 12px;
-      opacity: 0.7;
-      margin-bottom: 12px;
-      overflow: hidden;
-      line-height: 1.2em;
-      max-height: 3.6em;
-      text-align: justify;
-    }
-
-    .card-trip-infos {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-      padding: 16px;
-    }
-  }
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(100px, 1fr));
-  grid-gap: 16px;
-
-  .card-trip {
-    background-color: #f2f2f2;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-
-    .image-container {
-      flex: 1;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .movie-title {
-      font-size: 14px;
-      font-weight: bold;
-      margin: 20px 0;
-      padding: 0 10px;
-    }
   }
 }

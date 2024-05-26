@@ -1,6 +1,6 @@
-<div class="container w-75 my-4">
+<div class="container">
   <div class="row">
-    <div class="d-flex justify-content-between mb-3">
+    <div class="flexbox">
       <div class="header"><%= @list_type.humanize %></div>
     </div>
     <div class="cards">
@@ -9,7 +9,7 @@
           <div class="image-container">
             <img src="https://image.tmdb.org/t/p/w500<%= m.poster_path %>" />
           </div>
-          <h2 class="text-truncate movie-title"><%= m.title %></h2>
+          <h2 class="text-truncate card-title"><%= m.title %></h2>
         </div>
       <% end %>
     </div>

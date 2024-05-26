@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="flexbox">
+      <div class="header"><%= @list_type.humanize %></div>
+    </div>
+    <div class="cards">
+      <% @tv_series.each do |tv| %>
+        <%= link_to tv_serie_path(tv), class: "text-decoration-none text-dark" do %>
+          <div class="card-trip">
+            <div class="image-container">
+              <img src="https://image.tmdb.org/t/p/w500<%= tv.poster_path %>" />
+            </div>
+            <h2 class="text-truncate card-title"><%= tv.name %></h2>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

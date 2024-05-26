@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_094441) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_092014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,9 +44,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_094441) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
-    t.string "profile_url"
+    t.text "biography"
+    t.string "birthday"
+    t.string "profile_path"
+    t.float "popularity"
+    t.integer "tmdb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tmdb_id"], name: "index_actors_on_tmdb_id", unique: true
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -90,10 +95,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_094441) do
   create_table "tv_series", force: :cascade do |t|
     t.string "name"
     t.text "overview"
-    t.string "poster_url"
-    t.integer "rating"
+    t.string "first_air_date"
+    t.string "poster_path"
+    t.float "vote_average"
+    t.integer "tmdb_id"
+    t.string "list_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tmdb_id"], name: "index_tv_series_on_tmdb_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

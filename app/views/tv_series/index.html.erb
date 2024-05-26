@@ -1,2 +1,21 @@
-<h1>Series#index</h1>
-<p>Find me in app/views/series/index.html.erb</p>
+<div class="container">
+  <% @tv_series_lists.each do |list, tv_series| %>
+    <div class="row mb-4">
+      <div class="flexbox">
+        <div class="header"><%= list.humanize %></div>
+      </div>
+      <div class="cards">
+        <% tv_series.each do |tv| %>
+          <%= link_to tv_serie_path(tv), class: "text-decoration-none text-dark" do %>
+            <div class="card-trip">
+              <div class="image-container">
+                <img src="https://image.tmdb.org/t/p/w500<%= tv.poster_path %>" />
+              </div>
+              <h2 class="text-truncate card-title"><%= tv.name %></h2>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

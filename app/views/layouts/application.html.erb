@@ -24,14 +24,23 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "All Movies", root_path, class: "dropdown-item" %></li>
-                <li><%= link_to "Now Playing", movie_list_path('now_playing'), class: "dropdown-item" %></li>
-                <li><%= link_to "Popular", movie_list_path('popular'), class: "dropdown-item" %></li>
-                <li><%= link_to "Top Rated", movie_list_path('top_rated'), class: "dropdown-item" %></li>
-                <li><%= link_to "Upcoming", movie_list_path('upcoming'), class: "dropdown-item" %></li>
+                <li><%= link_to "Now Playing", movies_list_path('now_playing'), class: "dropdown-item" %></li>
+                <li><%= link_to "Popular", movies_list_path('popular'), class: "dropdown-item" %></li>
+                <li><%= link_to "Top Rated", movies_list_path('top_rated'), class: "dropdown-item" %></li>
+                <li><%= link_to "Upcoming", movies_list_path('upcoming'), class: "dropdown-item" %></li>
               </ul>
             </li>
-            <li>
-              <%= link_to "Series", tv_series_path, class: "nav-link" %>
+            <li class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Series
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "All Series", tv_series_path, class: "dropdown-item" %></li>
+                <li><%= link_to "Airing today", tv_series_list_path('airing_today'), class: "dropdown-item" %></li>
+                <li><%= link_to "Popular", tv_series_list_path('popular'), class: "dropdown-item" %></li>
+                <li><%= link_to "Top Rated", tv_series_list_path('top_rated'), class: "dropdown-item" %></li>
+                <li><%= link_to "On the air", tv_series_list_path('on_the_air'), class: "dropdown-item" %></li>
+              </ul>
             </li>
             <li>
               <%= link_to "Actors", actors_path, class: "nav-link" %>

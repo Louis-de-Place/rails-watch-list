@@ -1,11 +1,12 @@
 class UpdateMoviesJob < ApplicationJob
   queue_as :default
 
-  LIST_TYPES = %w[popular top_rated upcoming now_playing]
+  MOVIES_LIST_TYPES = %w[popular top_rated upcoming now_playing].freeze
+  PAGES = 5
 
   def perform
-    LIST_TYPES.each do |list_type|
-      Movie.fetch_and_cache_movies(list_type)
+    MOVIES_LIST_TYPES.each do |list_type|
+      Movie.fetch_and_cache_movies(list_type, PAGES)
     end
   end
 end

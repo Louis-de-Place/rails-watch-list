@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  get 'movies/list/:list_type', to: 'movies#list', as: 'movie_list'
+  get 'movies/list/:list_type', to: 'movies#list', as: 'movies_list'
   get 'movies/:id', to: 'movies#show', as: 'movie'
-  get '/tv_series', to: 'tv_series#index'
-  get '/tv_series/:id', to: 'tv_series#show', as: :tv_serie
+  get 'tv_series', to: 'tv_series#index'
+  get 'tv_series/list/:list_type', to: 'tv_series#list', as: 'tv_series_list'
+  get 'tv_series/:id', to: 'tv_series#show', as: 'tv_serie'
   resources :actors, only: %i[index show]
 
   resources :bookmarks, only: [:destroy]
